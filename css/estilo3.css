@@ -1,0 +1,235 @@
+/* --- CONFIGURACIÓN GENERAL Y VARIABLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --rosa-claro: #ffeef2;
+    --rosa-medio: #ff6699;
+    --magenta-principal: #d80064;
+    --magenta-oscuro: #80003c;
+    --blanco: #ffffff;
+    --oscuro: #2b101d;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al usar los botones */
+}
+
+body {
+    background-color: var(--rosa-claro);
+    color: var(--oscuro);
+}
+
+/* --- HEADER, LOGO Y NAVEGACIÓN --- */
+.sitio-header {
+    background-color: var(--blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(216, 0, 100, 0.15);
+    border-bottom: 3px solid var(--magenta-principal);
+}
+
+.logo-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icono {
+    width: 35px;
+    height: 35px;
+    color: var(--magenta-principal);
+}
+
+.logo-texto {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--magenta-oscuro);
+    letter-spacing: 0.5px;
+}
+
+.navegacion-principal {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-nav {
+    text-decoration: none;
+    color: var(--magenta-principal);
+    font-weight: 600;
+    padding: 8px 16px;
+    border: 2px solid var(--magenta-principal);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+    background-color: var(--magenta-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+}
+
+/* --- SECCIONES CON FONDOS DIFUMINADOS --- */
+.seccion-receta {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto Parallax elegante */
+}
+
+/* Asignación de imágenes de fondo correspondientes */
+.receta-papas {
+    background-image: url('https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1200&q=80');
+}
+
+.receta-pasta {
+    background-image: url('https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=1200&q=80');
+}
+
+.receta-brownie {
+    background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=1200&q=80');
+}
+
+/* Capa que difumina el fondo y tiñe de rosa/magenta */
+.capa-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px); /* Aquí se genera el difuminado solicitado */
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 238, 242, 0.65); /* Tinte rosado transparente */
+    z-index: 1;
+}
+
+/* --- CONTENEDOR DE CONTENIDO (TARJETA) --- */
+.contenido-tarjeta {
+    position: relative;
+    z-index: 2;
+    background-color: var(--blanco);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 1000px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-left: 8px solid var(--magenta-principal);
+}
+
+.categoria-etiqueta {
+    background-color: var(--rosa-medio);
+    color: var(--blanco);
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.contenido-tarjeta h2 {
+    color: var(--magenta-oscuro);
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+}
+
+/* --- ESTRUCTURA GRID PARA CONTENIDO INTERNO --- */
+.grid-receta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+@media (max-width: 768px) {
+    .grid-receta {
+        grid-template-columns: 1fr; /* Responsivo para celulares */
+    }
+}
+
+/* Info e Imagen */
+.imagen-receta {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.contenido-tarjeta h3 {
+    color: var(--magenta-principal);
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.contenido-tarjeta ul {
+    list-index: none;
+    padding-left: 20px;
+}
+
+.contenido-tarjeta li {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+/* Multimedia (Video e IFRAME) */
+.contenedor-video {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Proporción 16:9 */
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.contenedor-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.enlace-canal {
+    display: block;
+    text-align: center;
+    background-color: var(--magenta-principal);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.enlace-canal:hover {
+    background-color: var(--magenta-oscuro);
+}
+
+/* --- FOOTER --- */
+.sitio-footer {
+    background-color: var(--oscuro);
+    color: var(--rosa-claro);
+    text-align: center;
+    padding: 25px;
+    font-size: 0.95rem;
+    border-top: 4px solid var(--magenta-principal);
+}
